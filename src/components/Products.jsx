@@ -24,7 +24,7 @@ function Products(props) {
   }
 
   function productDeleteHandler(idToDelete) {
-    console.log('deleting', idToDelete);
+    console.log('deleting...', idToDelete);
   }
 
   const pObj = {
@@ -44,6 +44,7 @@ function Products(props) {
           // SingleProductui paduoti id props
           <SingleProduct
             key={pObj.id}
+            id={pObj.id}
             price={pObj.price}
             image={pObj.image}
             onDelete={productDeleteHandler}
