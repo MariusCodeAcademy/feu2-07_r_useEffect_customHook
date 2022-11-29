@@ -1,26 +1,14 @@
 import { useState } from 'react';
+import useInput from './../hooks/useInput';
 function AddProduct(props) {
   // sukurti handleSubmit funkcija
   // paleisti ja patekiant forma
   // sustabdyti perkrovima
 
-  // const [inputs, setInputs] = useState({
-  //   title: '',
-  //   imageUrl: '',
-  //   price: '',
-  // });
-
-  const [titleValue, setTitleValue] = useState('');
-
-  function titleInputHadler(event) {
-    setTitleValue(event.target.value);
-  }
-
-  const [imageUrl, setImageUrl] = useState('');
-
-  function imageInputHandler(e) {
-    setImageUrl(e.target.value);
-  }
+  // const [titleValue, setTitle] = useInput();
+  const title = useInput('');
+  const image = useInput('');
+  const price = useInput('');
 
   return (
     <fieldset>
@@ -28,25 +16,32 @@ function AddProduct(props) {
       <form>
         <input
           type='text'
-          onChange={titleInputHadler}
-          value={titleValue}
+          onChange={title.setter}
+          value={title.value}
           placeholder='title'
         />
         <input
-          onChange={imageInputHandler}
-          value={imageUrl}
+          onChange={image.setter}
+          value={image.value}
           type='text'
           placeholder='image url'
         />
-        <input type='number' step={0.01} placeholder='price' />
+        <input
+          type='number'
+          step={0.01}
+          onChange={price.setter}
+          value={price.value}
+          placeholder='price'
+        />
         <button type='submit'>Create</button>
       </form>
 
       <p>
-        Title: {titleValue}
+        Title: {title.value}
         <br />
-        ImageUrl: {imageUrl} <br />
-        Price: <br />
+        ImageUrl: {image.value} <br />
+        Price: {price.value}
+        <br />
       </p>
     </fieldset>
   );
