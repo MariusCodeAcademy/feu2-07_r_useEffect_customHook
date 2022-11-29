@@ -15,3 +15,9 @@ POST'indami galite pridėti daugiau prekių.
 
 Užduotis (naudokite komponentus!):
 ![pav](src/assets/uzd.avif)
+
+## Add product 
+
+1. kai pridedamas naujas produktas, paslepti forma 
+2. Kai tik uzsikrauna pulapis, forma nesimato. ji pasirodo kai paspaudziam mygtuka virs formos
+3. mygtukas keicia pavadinima priklausomai ar rodyti ar slepti forma.
