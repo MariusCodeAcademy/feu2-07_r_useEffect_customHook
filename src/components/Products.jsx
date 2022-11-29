@@ -17,12 +17,14 @@ function Products(props) {
     const resp = await fetch(url);
     const dataInJs = await resp.json();
     console.log('dataInJs ===', dataInJs);
+    // irasyti i state gautus produktus
   }
 
   return (
     <div>
       <h2>Products</h2>
       <ul className='unlisted grid--pr'>
+        {/* mapinti per mainProductsArray ir generuoti li */}
         <li className='singleProduct'>one</li>
         <li className='singleProduct'>one</li>
         <li className='singleProduct'>one</li>
