@@ -10,3 +10,7 @@ Content-Type: application/json
     "title": "Gerimanto Varske",
     "price": 5.99
 }
+###
+
+DELETE  https://golden-whispering-show.glitch.me/2
+
