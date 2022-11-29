@@ -13,7 +13,11 @@ function Products(props) {
   // 3. parsiuntus atnaujinam tuscia state masyva su gautais duomenimis
   // react pats nubraizo pakeitimus html
 
+  const [isLoading, setIsLoading] = useState(false);
+
   async function getProducts() {
+    // loading starts
+    setIsLoading(true);
     let url = 'https://golden-whispering-show.glitch.me';
     url = '/api/products.json';
     const resp = await fetch(url);
@@ -21,6 +25,7 @@ function Products(props) {
     console.log('dataInJs ===', dataInJs);
     // irasyti i state gautus produktus
     setMainProductsArray(dataInJs);
+    setIsLoading(false);
   }
 
   function productDeleteHandler(idToDelete) {
@@ -41,21 +46,24 @@ function Products(props) {
   return (
     <div>
       <h2>Products</h2>
-      <ul className='unlisted grid--pr'>
-        {/* mapinti per mainProductsArray ir generuoti li */}
-        {mainProductsArray.map((pObj) => (
-          // SingleProductui paduoti id props
-          <SingleProduct
-            key={pObj.id}
-            id={pObj.id}
-            price={pObj.price}
-            image={pObj.image}
-            onDelete={productDeleteHandler}
-          >
-            {pObj.title}
-          </SingleProduct>
-        ))}
-      </ul>
+      {isLoading && <h2>Loading...</h2>}
+      {!isLoading && (
+        <ul className='unlisted grid--pr'>
+          {/* mapinti per mainProductsArray ir generuoti li */}
+          {mainProductsArray.map((pObj) => (
+            // SingleProductui paduoti id props
+            <SingleProduct
+              key={pObj.id}
+              id={pObj.id}
+              price={pObj.price}
+              image={pObj.image}
+              onDelete={productDeleteHandler}
+            >
+              {pObj.title}
+            </SingleProduct>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
