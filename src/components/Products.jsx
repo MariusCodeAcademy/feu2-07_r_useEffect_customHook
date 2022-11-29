@@ -13,11 +13,13 @@ function Products(props) {
   // react pats nubraizo pakeitimus html
 
   async function getProducts() {
-    const url = 'https://golden-whispering-show.glitch.me';
+    let url = 'https://golden-whispering-show.glitch.me';
+    url = '/api/products.json';
     const resp = await fetch(url);
     const dataInJs = await resp.json();
     console.log('dataInJs ===', dataInJs);
     // irasyti i state gautus produktus
+    setMainProductsArray(dataInJs);
   }
 
   return (
@@ -25,9 +27,9 @@ function Products(props) {
       <h2>Products</h2>
       <ul className='unlisted grid--pr'>
         {/* mapinti per mainProductsArray ir generuoti li */}
-        <li className='singleProduct'>one</li>
-        <li className='singleProduct'>one</li>
-        <li className='singleProduct'>one</li>
+        {mainProductsArray.map((pObj) => (
+          <li className='singleProduct'>{pObj.title}</li>
+        ))}
       </ul>
     </div>
   );
