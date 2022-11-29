@@ -7,10 +7,15 @@ function useInput(initValue) {
     setInputValue(event.target.value);
   }
 
+  function resetInput() {
+    setInputValue('');
+  }
+
   // return [inputValue, inputHadler];
   return {
     value: inputValue,
     setter: inputHadler,
+    reset: resetInput,
   };
 }
 

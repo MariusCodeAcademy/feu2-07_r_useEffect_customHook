@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import useInput from './../hooks/useInput';
 function AddProduct(props) {
+  const formRef = useRef(null);
   // sukurti handleSubmit funkcija
   function handleSubmit(event) {
     // paleisti ja patekiant forma
@@ -27,10 +28,19 @@ function AddProduct(props) {
   const image = useInput('');
   const price = useInput('');
 
+  function formResetHandler() {
+    //
+    console.log('formRef.current ===', formRef.current);
+    // formRef.current.reset(); // neveikia
+    title.reset();
+    image.reset();
+    price.reset();
+  }
+
   return (
     <fieldset>
       <legend>AddProduct</legend>
-      <form onSubmit={handleSubmit}>
+      <form ref={formRef} onSubmit={handleSubmit}>
         <input
           type='text'
           onChange={title.setter}
@@ -51,6 +61,9 @@ function AddProduct(props) {
           placeholder='price'
         />
         <button type='submit'>Create</button>
+        <button onClick={formResetHandler} type='button'>
+          Reset
+        </button>
       </form>
 
       <p>
