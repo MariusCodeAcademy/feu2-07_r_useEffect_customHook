@@ -15,33 +15,34 @@ function Products(props) {
   // react pats nubraizo pakeitimus html
 
   const [isLoading, setIsLoading] = useState(false);
+  const [toShowForm, setToShowForm] = useState(false);
 
   async function getProducts() {
     try {
-      console.log('try');
+      // console.log('try');
       // loading starts
       setIsLoading(true);
       let url = 'https://golden-whispering-show.glitch.me';
       url = '/api/products.json';
       const resp = await fetch(url);
       const dataInJs = await resp.json();
-      console.log('dataInJs ===', dataInJs);
+      // console.log('dataInJs ===', dataInJs);
       // irasyti i state gautus produktus
       setMainProductsArray(dataInJs);
       // setIsLoading(false); // moved to finally
     } catch (error) {
-      console.log('catch');
+      // console.log('catch');
       console.warn('did not get products');
       // setIsLoading(false); // moved to finally
     } finally {
       // vyksta bet kuriuo atveju
-      console.log('finally');
+      // console.log('finally');
       setIsLoading(false);
     }
   }
 
   function productDeleteHandler(idToDelete) {
-    console.log('deleting...', idToDelete);
+    // console.log('deleting...', idToDelete);
     setMainProductsArray((prevState) =>
       prevState.filter((pObj) => pObj.id !== idToDelete)
     );
@@ -50,13 +51,13 @@ function Products(props) {
   // susikurti productAddHandler(newProduct)
   function productAddHandler(newProduct) {
     //
-    console.log('productAddHandler ran');
-    console.log('newProduct ===', newProduct);
+    // console.log('productAddHandler ran');
+    // console.log('newProduct ===', newProduct);
     const newProductWhitId = {
       id: Math.random().toString().slice(5),
       ...newProduct,
     };
-    console.log('newProductWhitId ===', newProductWhitId);
+    // console.log('newProductWhitId ===', newProductWhitId);
     setMainProductsArray((prevProducts) => [...prevProducts, newProductWhitId]);
   }
   // perduoti i AddProduct
@@ -75,7 +76,8 @@ function Products(props) {
     <div>
       <h2>Products</h2>
       <button>Show Add Product</button>
-      <AddProduct onAddProduct={productAddHandler} />
+      {toShowForm && <AddProduct onAddProduct={productAddHandler} />}
+
       {isLoading && <h2>Loading...</h2>}
       {!isLoading && (
         <ul className='unlisted grid--pr'>

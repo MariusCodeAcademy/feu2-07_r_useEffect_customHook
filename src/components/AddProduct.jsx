@@ -6,7 +6,7 @@ function AddProduct(props) {
     // paleisti ja patekiant forma
     // sustabdyti perkrovima
     event.preventDefault();
-    console.log('handling submit');
+    // console.log('handling submit');
 
     // surinkti visas input reiksmes i viena objekta
     const newProducObj = {
