@@ -25,6 +25,9 @@ function Products(props) {
 
   function productDeleteHandler(idToDelete) {
     console.log('deleting...', idToDelete);
+    setMainProductsArray((prevState) =>
+      prevState.filter((pObj) => pObj.id !== idToDelete)
+    );
   }
 
   const pObj = {
