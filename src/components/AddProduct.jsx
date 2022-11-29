@@ -10,6 +10,7 @@ function AddProduct(props) {
 
     // surinkti visas input reiksmes i viena objekta
     // ir iskviesti tevinio komponento funckija productAddHandler(newProdObj)
+    props.onAddProduct();
     // paduodant argumentu newProdObj
 
     // kad iskviesti tevinio komponento funkcija, mes aprasom ta funkcija Products

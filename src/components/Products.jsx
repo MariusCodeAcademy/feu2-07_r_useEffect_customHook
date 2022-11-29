@@ -48,6 +48,10 @@ function Products(props) {
   }
 
   // susikurti productAddHandler(newProduct)
+  function productAddHandler(newProduct) {
+    //
+    console.log('productAddHandler ran');
+  }
   // perduoti i AddProduct
   // productAddHandler kviecia setMainProductsArray()
   // atnaujinam su arrow funkcija (spread (...))
@@ -64,7 +68,7 @@ function Products(props) {
     <div>
       <h2>Products</h2>
       <button>Show Add Product</button>
-      <AddProduct />
+      <AddProduct onAddProduct={productAddHandler} />
       {isLoading && <h2>Loading...</h2>}
       {!isLoading && (
         <ul className='unlisted grid--pr'>
