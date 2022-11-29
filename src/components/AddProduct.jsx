@@ -4,6 +4,12 @@ function AddProduct(props) {
   // paleisti ja patekiant forma
   // sustabdyti perkrovima
 
+  // const [inputs, setInputs] = useState({
+  //   title: '',
+  //   imageUrl: '',
+  //   price: '',
+  // });
+
   const [titleValue, setTitleValue] = useState('');
 
   function titleInputHadler(event) {
