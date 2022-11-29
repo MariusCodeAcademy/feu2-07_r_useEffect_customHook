@@ -9,8 +9,13 @@ function AddProduct(props) {
     console.log('handling submit');
 
     // surinkti visas input reiksmes i viena objekta
+    const newProducObj = {
+      title: title.value,
+      image: image.value,
+      price: price.value,
+    };
     // ir iskviesti tevinio komponento funckija productAddHandler(newProdObj)
-    props.onAddProduct();
+    props.onAddProduct(newProducObj);
     // paduodant argumentu newProdObj
 
     // kad iskviesti tevinio komponento funkcija, mes aprasom ta funkcija Products

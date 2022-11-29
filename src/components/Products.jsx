@@ -51,6 +51,13 @@ function Products(props) {
   function productAddHandler(newProduct) {
     //
     console.log('productAddHandler ran');
+    console.log('newProduct ===', newProduct);
+    const newProductWhitId = {
+      id: Math.random().toString().slice(5),
+      ...newProduct,
+    };
+    console.log('newProductWhitId ===', newProductWhitId);
+    setMainProductsArray((prevProducts) => [...prevProducts, newProductWhitId]);
   }
   // perduoti i AddProduct
   // productAddHandler kviecia setMainProductsArray()
