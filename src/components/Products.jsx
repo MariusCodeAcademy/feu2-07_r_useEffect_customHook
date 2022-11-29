@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { isThereValueStored, store } from '../helpers/storage';
 import AddProduct from './AddProduct';
 import './Products.css';
 import SingleProduct from './SingleProduct';
+import { getFromStore } from './../helpers/storage';
 
 function Products(props) {
   // komponentas kuris parsisiuncia duomenis
@@ -9,7 +11,15 @@ function Products(props) {
   const [mainProductsArray, setMainProductsArray] = useState([]);
   // 2. tik sugeneravus useEffecte parsiunciam duomenis
   useEffect(() => {
-    getProducts();
+    // check if we have products in local storage
+    if (isThereValueStored()) {
+      console.log('value is stored');
+      const storeProducts = getFromStore();
+      console.log('storeProducts ===', storeProducts);
+      setMainProductsArray(storeProducts);
+    } else {
+      getProducts();
+    }
   }, []);
   // 3. parsiuntus atnaujinam tuscia state masyva su gautais duomenimis
   // react pats nubraizo pakeitimus html
@@ -29,6 +39,7 @@ function Products(props) {
       // console.log('dataInJs ===', dataInJs);
       // irasyti i state gautus produktus
       setMainProductsArray(dataInJs);
+      store(dataInJs);
       // setIsLoading(false); // moved to finally
     } catch (error) {
       // console.log('catch');
