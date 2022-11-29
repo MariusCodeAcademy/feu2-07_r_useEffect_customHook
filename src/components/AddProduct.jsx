@@ -6,9 +6,9 @@ function AddProduct(props) {
   // sustabdyti perkrovima
 
   // const [titleValue, setTitle] = useInput();
-  const title = useInput('');
+  const title = useInput('Basket ball');
   const image = useInput('');
-  const price = useInput('');
+  const price = useInput(79.99);
 
   return (
     <fieldset>
