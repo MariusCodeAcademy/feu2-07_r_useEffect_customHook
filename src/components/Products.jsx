@@ -47,6 +47,11 @@ function Products(props) {
     );
   }
 
+  // susikurti productAddHandler(newProduct)
+  // perduoti i AddProduct
+  // productAddHandler kviecia setMainProductsArray()
+  // atnaujinam su arrow funkcija (spread (...))
+
   const pObj = {
     id: 1,
     image:

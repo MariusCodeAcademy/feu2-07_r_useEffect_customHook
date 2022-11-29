@@ -2,8 +2,19 @@ import { useState } from 'react';
 import useInput from './../hooks/useInput';
 function AddProduct(props) {
   // sukurti handleSubmit funkcija
-  // paleisti ja patekiant forma
-  // sustabdyti perkrovima
+  function handleSubmit(event) {
+    // paleisti ja patekiant forma
+    // sustabdyti perkrovima
+    event.preventDefault();
+    console.log('handling submit');
+
+    // surinkti visas input reiksmes i viena objekta
+    // ir iskviesti tevinio komponento funckija productAddHandler(newProdObj)
+    // paduodant argumentu newProdObj
+
+    // kad iskviesti tevinio komponento funkcija, mes aprasom ta funkcija Products
+    // komponente ir perduodam ja i AddProducts per props
+  }
 
   // const [titleValue, setTitle] = useInput();
   const title = useInput('Basket ball');
@@ -13,7 +24,7 @@ function AddProduct(props) {
   return (
     <fieldset>
       <legend>AddProduct</legend>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type='text'
           onChange={title.setter}
