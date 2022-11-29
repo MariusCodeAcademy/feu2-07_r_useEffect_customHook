@@ -23,6 +23,10 @@ function Products(props) {
     setMainProductsArray(dataInJs);
   }
 
+  function productDeleteHandler(idToDelete) {
+    console.log('deleting', idToDelete);
+  }
+
   const pObj = {
     id: 1,
     image:
@@ -37,7 +41,13 @@ function Products(props) {
       <ul className='unlisted grid--pr'>
         {/* mapinti per mainProductsArray ir generuoti li */}
         {mainProductsArray.map((pObj) => (
-          <SingleProduct key={pObj.id} price={pObj.price} image={pObj.image}>
+          // SingleProductui paduoti id props
+          <SingleProduct
+            key={pObj.id}
+            price={pObj.price}
+            image={pObj.image}
+            onDelete={productDeleteHandler}
+          >
             {pObj.title}
           </SingleProduct>
         ))}
