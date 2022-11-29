@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import AddProduct from './AddProduct';
 import './Products.css';
 import SingleProduct from './SingleProduct';
 
@@ -57,6 +58,8 @@ function Products(props) {
   return (
     <div>
       <h2>Products</h2>
+      <button>Show Add Product</button>
+      <AddProduct />
       {isLoading && <h2>Loading...</h2>}
       {!isLoading && (
         <ul className='unlisted grid--pr'>
