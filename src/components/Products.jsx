@@ -59,6 +59,7 @@ function Products(props) {
     };
     // console.log('newProductWhitId ===', newProductWhitId);
     setMainProductsArray((prevProducts) => [...prevProducts, newProductWhitId]);
+    setToShowForm(false);
   }
   // perduoti i AddProduct
   // productAddHandler kviecia setMainProductsArray()
@@ -72,10 +73,19 @@ function Products(props) {
     price: 2.99,
   };
 
+  function toShowFormOrNotToShow() {
+    // pakeisti toShowForm reiksme i true
+    // setToShowForm(true);
+    // pakeisti toShowForm reiksme i priesiga esamai.
+    setToShowForm((prevShowValue) => !prevShowValue);
+  }
+
   return (
     <div>
       <h2>Products</h2>
-      <button>Show Add Product</button>
+      <button onClick={toShowFormOrNotToShow}>
+        {toShowForm ? 'Hide' : 'Show'} Add Product
+      </button>
       {toShowForm && <AddProduct onAddProduct={productAddHandler} />}
 
       {isLoading && <h2>Loading...</h2>}

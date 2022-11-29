@@ -23,9 +23,9 @@ function AddProduct(props) {
   }
 
   // const [titleValue, setTitle] = useInput();
-  const title = useInput('Basket ball');
+  const title = useInput('');
   const image = useInput('');
-  const price = useInput(79.99);
+  const price = useInput('');
 
   return (
     <fieldset>
