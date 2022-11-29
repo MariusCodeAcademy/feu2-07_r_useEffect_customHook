@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './Products.css';
+import SingleProduct from './SingleProduct';
 
 function Products(props) {
   // komponentas kuris parsisiuncia duomenis
@@ -28,7 +29,7 @@ function Products(props) {
       <ul className='unlisted grid--pr'>
         {/* mapinti per mainProductsArray ir generuoti li */}
         {mainProductsArray.map((pObj) => (
-          <li className='singleProduct'>{pObj.title}</li>
+          <SingleProduct>{pObj.title}</SingleProduct>
         ))}
       </ul>
     </div>
