@@ -16,16 +16,27 @@ function Products(props) {
   const [isLoading, setIsLoading] = useState(false);
 
   async function getProducts() {
-    // loading starts
-    setIsLoading(true);
-    let url = 'https://golden-whispering-show.glitch.me';
-    url = '/api/products.json';
-    const resp = await fetch(url);
-    const dataInJs = await resp.json();
-    console.log('dataInJs ===', dataInJs);
-    // irasyti i state gautus produktus
-    setMainProductsArray(dataInJs);
-    setIsLoading(false);
+    try {
+      console.log('try');
+      // loading starts
+      setIsLoading(true);
+      let url = 'https://golden-whispering-show.glitch.me';
+      url = '/api/products.json';
+      const resp = await fetch(url);
+      const dataInJs = await resp.json();
+      console.log('dataInJs ===', dataInJs);
+      // irasyti i state gautus produktus
+      setMainProductsArray(dataInJs);
+      // setIsLoading(false); // moved to finally
+    } catch (error) {
+      console.log('catch');
+      console.warn('did not get products');
+      // setIsLoading(false); // moved to finally
+    } finally {
+      // vyksta bet kuriuo atveju
+      console.log('finally');
+      setIsLoading(false);
+    }
   }
 
   function productDeleteHandler(idToDelete) {
