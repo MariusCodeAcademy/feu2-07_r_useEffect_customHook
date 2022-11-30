@@ -57,6 +57,8 @@ function Products(props) {
     setMainProductsArray((prevState) =>
       prevState.filter((pObj) => pObj.id !== idToDelete)
     );
+
+    // padaryti kad istrynus elementa mes issaugotume reiksme su store
   }
 
   // susikurti productAddHandler(newProduct)
@@ -69,7 +71,12 @@ function Products(props) {
       ...newProduct,
     };
     // console.log('newProductWhitId ===', newProductWhitId);
-    setMainProductsArray((prevProducts) => [...prevProducts, newProductWhitId]);
+    setMainProductsArray((prevProducts) => {
+      const newState = [...prevProducts, newProductWhitId];
+      store(newState);
+      return newState;
+    });
+
     setToShowForm(false);
   }
   // perduoti i AddProduct
