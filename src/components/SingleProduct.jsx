@@ -17,7 +17,7 @@ function SingleProduct(props) {
       <h3>{props.children}</h3>
       <p className='singleP__price'>$ {props.price}</p>
       {/* pasiiimti id is props ir paduoti i onDelete */}
-      <button onClick={deleteTrigger}>delete ⁉ </button>
+      <button onClick={props.onDelete}>delete ⁉ </button>
     </li>
   );
 }

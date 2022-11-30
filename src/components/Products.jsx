@@ -117,7 +117,7 @@ function Products(props) {
               id={pObj.id}
               price={pObj.price}
               image={pObj.image}
-              onDelete={productDeleteHandler}
+              onDelete={() => productDeleteHandler(pObj.id)}
             >
               {pObj.title}
             </SingleProduct>
